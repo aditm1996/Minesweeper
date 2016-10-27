@@ -1,3 +1,5 @@
+package models;
+
 import java.util.Random;
 
 /**
@@ -7,14 +9,14 @@ import java.util.Random;
  */
 public class MineSweeperBoard {
   private static Random random = new Random();
-  Cell[][] cell;
-  int rows = 10;
-  int cols = 10;
-  int mines = 10;
-  int flags = 0;
-  int completion = 0;
-  boolean finished = false;
-  boolean won = false;
+  private Cell[][] cell;
+  private int rows = 10;
+  private int cols = 10;
+  private int mines = 10;
+  private int flags = 0;
+  private int completion = 0;
+  private boolean finished = false;
+  private boolean won = false;
 
   /**
    *  Produces the number of rows in the board.

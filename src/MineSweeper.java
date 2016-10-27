@@ -15,6 +15,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+import models.MineSweeperBoard;
 
 /**
  *  This is the GUI of the Minesweeper game.
