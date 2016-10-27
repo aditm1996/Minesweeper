@@ -120,8 +120,8 @@ public class MineSweeper extends Application {
 
         GridPane grid = initGridPane();
 
-        initGridRows(grid);
-        initGridCols(grid);
+        initGridRowsOf(grid);
+        initGridColsOf(grid);
 
         populateGridWithButtons(grid);
 
@@ -141,19 +141,41 @@ public class MineSweeper extends Application {
 
         styleToolbar(toolbar);
 
-        Button newGame = new Button("New game");
+        Button newGame = initNewGameButton();
 
         configureListenerForNewGameButton(newGame);
 
-        flagsLabel = new Label(board.getFlags() + "/" + board.getMines() + " flags");
-        completionLabel = new Label(board.getCompletion() + "/" + board.getMaxCompletion() + " cells");
-        statusLabel = new Label();
-        Button exitButton = new Button("Exit");
+        initFlagsLabel();
+        initCompletionLabel();
+        initStatusLabel();
+
+        Button exitButton = initExitButton();
 
         exitButton.setOnAction(event -> primaryStage.close());
 
         toolbar.getChildren().addAll(newGame, flagsLabel, completionLabel, statusLabel, exitButton);
+
         return toolbar;
+    }
+
+    private Button initExitButton() {
+        return new Button("Exit");
+    }
+
+    private Button initNewGameButton() {
+        return new Button("New game");
+    }
+
+    private void initStatusLabel() {
+        statusLabel = new Label();
+    }
+
+    private void initCompletionLabel() {
+        completionLabel = new Label(board.getCompletion() + "/" + board.getMaxCompletion() + " cells");
+    }
+
+    private void initFlagsLabel() {
+        flagsLabel = new Label(board.getFlags() + "/" + board.getMines() + " flags");
     }
 
     private void configureListenerForNewGameButton(Button newGame) {
@@ -226,7 +248,7 @@ public class MineSweeper extends Application {
         return grid;
     }
 
-    private void initGridCols(GridPane grid) {
+    private void initGridColsOf(GridPane grid) {
         for (int col = 0; col < board.getCols(); col++) {
             ColumnConstraints columnConstraints = new ColumnConstraints();
             columnConstraints.setPercentWidth(100.0 / board.getCols());
@@ -234,7 +256,7 @@ public class MineSweeper extends Application {
         }
     }
 
-    private void initGridRows(GridPane grid) {
+    private void initGridRowsOf(GridPane grid) {
         for (int row = 0; row < board.getRows(); row++) {
             RowConstraints rowConstraints = new RowConstraints();
             rowConstraints.setPercentHeight(100.0 / board.getRows());
